@@ -1,0 +1,18 @@
+1.) install hwinfo
+1.1)pacman -S terminus-font
+2.) pacman -S freetype
+3.) set 
+GRUB_GFXPAYLOAD_LINUX=keep
+GRUB_GFXMODE=1024x768
+
+try something like:
+setfont -h32 /usr/share/kbd/consolefonts/ter-232b.psf.gz
+and check system console, then:
+add to: cat /etc/vconsole.conf 
+
+FONT=ter-p32b
+FONT_MAP=koi8u2ruscii
+
+add consolefonts into HOOKS section to /etc/mkinitcpio.conf
+
+HOOKS=(base udev consolefont autodetect modconf block keyboard systemd sd-zfs filesystems) 

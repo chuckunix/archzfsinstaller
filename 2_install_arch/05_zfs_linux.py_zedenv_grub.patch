@@ -1,0 +1,20 @@
+--- 05_zfs_linux.py	2019-03-15 17:25:55.573414009 +0000
++++ 05_zfs_linux.py_zedenv_grub	2019-03-15 17:26:16.916748334 +0000
+@@ -108,7 +108,7 @@
+         # Root dataset will double as device ID
+         self.linux_root_dataset = os.path.join(
+             self.be_root, self.boot_environment)
+-        self.linux_root_device = f"ZFS={self.linux_root_dataset}"
++        self.linux_root_device = f"zfs:{self.linux_root_dataset}"
+         self.boot_device_id = self.linux_root_dataset
+ 
+         self.initrd_early = self.get_initrd_early()
+@@ -520,7 +520,7 @@
+         # in GRUB terms, bootfs is everything after pool
+         self.bootfs = "/" + self.root_dataset.split("/", 1)[1]
+         self.rpool = self.root_dataset.split("/")[0]
+-        self.linux_root_device = f"ZFS={self.rpool}{self.bootfs}"
++        self.linux_root_device = f"zfs:{self.rpool}{self.bootfs}"
+ 
+         self.active_boot_environment = zedenv.lib.be.bootfs_for_pool(self.rpool)
+ 

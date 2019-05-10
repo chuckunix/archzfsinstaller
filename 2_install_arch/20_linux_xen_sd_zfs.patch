@@ -1,0 +1,11 @@
+--- 20_linux_xen	2019-03-09 08:33:57.490025284 +0000
++++ 20_linux_xen_sd-zfs	2019-03-09 08:34:36.293360385 +0000
+@@ -71,7 +71,7 @@
+     xzfs)
+ 	rpool=`${grub_probe} --device ${GRUB_DEVICE} --target=fs_label 2>/dev/null || true`
+ 	bootfs="`make_system_path_relative_to_its_root / | sed -e "s,@$,,"`"
+-	LINUX_ROOT_DEVICE="ZFS=${rpool}${bootfs}"
++	LINUX_ROOT_DEVICE="zfs:${rpool}${bootfs}"
+ 	;;
+ esac
+ 
